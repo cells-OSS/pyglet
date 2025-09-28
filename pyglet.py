@@ -1,13 +1,28 @@
 import pyfiglet
+import sys
+import subprocess
 
 welcomeMessage = """
 ===============WELCOME===============
 """
 
-print(welcomeMessage)
+menu = """
+1 = Convert text to figlet
 
-normal_ver = input("> ")
+TIP: To come back to this menu at any time, type "back!"
+"""
+print (welcomeMessage, menu)
 
-figlet_ver = pyfiglet.figlet_format(normal_ver)
+chooseOption = input("Which option would you like to choose(1)?: ")
 
-print(figlet_ver)
+if chooseOption == "1":
+    while True:
+        normal_ver = input("> ")
+
+        if normal_ver.lower() == "back!":
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit() 
+
+        figlet_ver = pyfiglet.figlet_format(normal_ver)
+
+        print(figlet_ver)
