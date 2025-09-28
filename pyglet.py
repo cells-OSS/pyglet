@@ -5,10 +5,10 @@ import requests
 from packaging import version
 import os
 
-#__version__ = "v1.0"
+# __version__ = "v1.0"
 #
 #
-#def get_latest_release_tag():
+# def get_latest_release_tag():
 #    try:
 #        url = "https://api.github.com/repos/cells-OSS/pyglet/releases/latest"
 #        response = requests.get(url, timeout=5)
@@ -20,12 +20,12 @@ import os
 #        return __version__.lstrip("v")
 #
 #
-#def is_update_available(current_version):
+# def is_update_available(current_version):
 #    latest = get_latest_release_tag()
 #    return version.parse(latest) > version.parse(current_version.lstrip("v"))
 #
 #
-#def download_latest_script():
+# def download_latest_script():
 #    latest_version = get_latest_release_tag()
 #    filename = f"pyglet-v{latest_version}.py"
 #    url = "https://raw.githubusercontent.com/cells-OSS/pyglet/main/pyglet.py"
@@ -42,7 +42,7 @@ import os
 #    input("Press Enter to exit...")
 #    exit()
 #
-#if os.path.exists("auto_update.conf"):
+# if os.path.exists("auto_update.conf"):
 #    with open("auto_update.conf", "rb") as auto_update_configFile:
 #        auto_update_config = auto_update_configFile.read().decode()
 #        if auto_update_config == "True":
@@ -58,7 +58,7 @@ menu = """
 
 TIP: To come back to this menu at any time, type "back!"
 """
-print (welcomeMessage, menu)
+print(welcomeMessage, menu)
 
 chooseOption = int(input("Which option would you like to choose(1/2)?: "))
 
@@ -68,17 +68,17 @@ if chooseOption == 1:
 
         if normal_ver.lower() == "back!":
             subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit() 
+            sys.exit()
 
         figlet_ver = pyfiglet.figlet_format(normal_ver)
 
         print(figlet_ver)
 
-#if chooseOption == 2:
-#    
+# if chooseOption == 2:
+#
 #    settingsMenu = """
-#1 = Change Auto-update settings
-#"""
+# 1 = Change Auto-update settings
+# """
 #    print(settingsMenu)
 #    chooseSetting = int(input("Which option would you like to choose(1)?: "))
 #
