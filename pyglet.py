@@ -42,7 +42,12 @@ if os.path.exists("auto_update.conf"):
                print("New version available!")
                download_latest_script()
 
-welcomeMessage = pyfiglet.figlet_format("Pyglet")
+if os.path.exists("welcome_message.txt"):
+   with open("welcome_message.txt", "rb") as welcome_message_file:
+       welcome_message = welcome_message_file.read().decode()
+       welcomeMessage = pyfiglet.figlet_format(welcome_message)
+else:
+   welcomeMessage = pyfiglet.figlet_format("Pyglet")
 
 menu = """
 1 = Convert text to figlet
@@ -70,6 +75,7 @@ if chooseOption == 2:
    settingsMenu = """
 ===============SETTINGS===============
 1 = Turn auto-update on/off
+2 = Change welcome message
 """
    print(settingsMenu)
    chooseSetting = int(input("Which option would you like to choose(1)?: "))
@@ -99,3 +105,12 @@ if chooseOption == 2:
                input("Press any key to restart...")
                subprocess.Popen([sys.executable] + sys.argv)
                sys.exit()
+
+       if chooseSetting == 2:
+            newWelcomeMessage = input("New welcome message: ")
+            with open("welcome_message.txt", "wb") as welcome_message_file:
+                welcome_message_file.write(newWelcomeMessage.encode())
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
