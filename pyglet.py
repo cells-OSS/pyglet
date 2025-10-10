@@ -5,7 +5,7 @@ import requests
 from packaging import version
 import os
 
-__version__ = "v1.0"
+__version__ = "v1.1"
 
 
 def get_latest_release_tag():
@@ -72,8 +72,7 @@ if chooseOption == 1:
         normal_ver = input("> ")
 
         if normal_ver.lower() == "back!":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         figlet_ver = pyfiglet.figlet_format(normal_ver)
 
@@ -97,22 +96,19 @@ if chooseOption == 2:
         aUpdateOption = input(
             "Which option would you like to choose(1/2)?: ")
         if aUpdateOption.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
         if aUpdateOption == "1":
             with open("auto_update.conf", "wb") as auto_update_configFile:
                 auto_update_configFile.write("True".encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
         if aUpdateOption == "2":
             with open("auto_update.conf", "wb") as auto_update_configFile:
                 auto_update_configFile.write("False".encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == 2:
             newWelcomeMessage = input("New welcome message: ")
@@ -120,5 +116,4 @@ if chooseOption == 2:
                 welcome_message_file.write(newWelcomeMessage.encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
