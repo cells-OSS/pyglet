@@ -116,3 +116,18 @@ if chooseOption == 2:
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
+        
+        else:
+            print("Invalid option.")
+            input("Press Enter to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
+
+    else:
+        print("Invalid option.")
+        input("Press Enter to restart...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+
+else:
+    print("Invalid option.")
+    input("Press Enter to restart...")
+    os.execv(sys.executable, [sys.executable] + sys.argv)
