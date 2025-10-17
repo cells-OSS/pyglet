@@ -1,6 +1,5 @@
 import pyfiglet
 import sys
-import subprocess
 import requests
 from packaging import version
 import os
