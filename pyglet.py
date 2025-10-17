@@ -4,7 +4,7 @@ import requests
 from packaging import version
 import os
 
-__version__ = "v1.1"
+__version__ = "v1.2"
 
 
 def get_latest_release_tag():
