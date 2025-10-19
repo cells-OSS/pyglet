@@ -91,10 +91,11 @@ if chooseOption == 2:
 ===============SETTINGS===============
 1 = Turn auto-update on/off
 2 = Change welcome message
+3 = Reset welcome message.
 ======================================
 """
     print(settingsMenu)
-    chooseSetting = int(input("Which option would you like to choose(1)?: "))
+    chooseSetting = int(input("Which option would you like to choose(1/2/3)?: "))
     if chooseSetting == 1:
         aUpdateMenu = """
    ===============AUTO-UPDATE===============
@@ -136,7 +137,14 @@ if chooseOption == 2:
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
-        
+        if chooseSetting == 3:
+            config_path = os.path.join(config_dir, "welcome_message.conf")
+
+            if os.path.exists(config_path):
+                os.remove(config_path)
+                print("Welcome message have successfully been reset.")
+                input("Press Enter to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
         
         else:
             print("Invalid option.")
