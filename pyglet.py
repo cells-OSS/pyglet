@@ -40,17 +40,26 @@ def download_latest_script():
     input("Press Enter to exit...")
     exit()
 
+if os.name == "nt":
+    config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
+else:
+    config_dir = os.path.expanduser("~/.config/pyndcrypt")
 
-if os.path.exists("auto_update.conf"):
-    with open("auto_update.conf", "rb") as auto_update_configFile:
+os.makedirs(config_dir, exist_ok=True)
+
+welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
+auto_update_config_path = os.path.join(config_dir, "auto_update.conf")
+
+if os.path.exists(auto_update_config_path):
+    with open(auto_update_config_path, "rb") as auto_update_configFile:
         auto_update_config = auto_update_configFile.read().decode()
         if auto_update_config == "True":
             if is_update_available(__version__):
                 print("New version available!")
                 download_latest_script()
 
-if os.path.exists("welcome_message.txt"):
-    with open("welcome_message.txt", "rb") as welcome_message_file:
+if os.path.exists(welcomeMessage_config_path):
+    with open(welcomeMessage_config_path, "rb") as welcome_message_file:
         welcome_message = welcome_message_file.read().decode()
         welcomeMessage = pyfiglet.figlet_format(welcome_message)
 else:
