@@ -91,6 +91,7 @@ if chooseOption == 2:
 ===============SETTINGS===============
 1 = Turn auto-update on/off
 2 = Change welcome message
+======================================
 """
     print(settingsMenu)
     chooseSetting = int(input("Which option would you like to choose(1)?: "))
@@ -103,16 +104,22 @@ if chooseOption == 2:
         print(aUpdateMenu)
         aUpdateOption = input(
             "Which option would you like to choose(1/2)?: ")
+        
+        config_path = os.path.join(config_dir, "auto_update.conf")
+        
         if aUpdateOption.lower() == "back":
             os.execv(sys.executable, [sys.executable] + sys.argv)
+
         if aUpdateOption == "1":
-            with open("auto_update.conf", "wb") as auto_update_configFile:
+            
+            with open(config_path, "wb") as auto_update_configFile:
                 auto_update_configFile.write("True".encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
+
         if aUpdateOption == "2":
-            with open("auto_update.conf", "wb") as auto_update_configFile:
+            with open(config_path, "wb") as auto_update_configFile:
                 auto_update_configFile.write("False".encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
