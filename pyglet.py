@@ -127,11 +127,16 @@ if chooseOption == 2:
 
         if chooseSetting == 2:
             newWelcomeMessage = input("New welcome message: ")
-            with open("welcome_message.txt", "wb") as welcome_message_file:
+
+            config_path = os.path.join(config_dir, "welcome_message.conf")
+
+            with open(config_path, "wb") as welcome_message_file:
                 welcome_message_file.write(newWelcomeMessage.encode())
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
+
+        
         
         else:
             print("Invalid option.")
