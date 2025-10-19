@@ -5,3 +5,5 @@ A simple CLI figlet app written in Python with the help of the library "pyfiglet
 [Python](https://www.python.org/)
 
 [pyfiglet](https://pypi.org/project/pyfiglet/)
+
+[packaging](https://pypi.org/project/packaging/)
